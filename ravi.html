@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravi Kumar - Software Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: #f8f9fa;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #495057;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .experience-item, .project-item {
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .experience-item::before, .project-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .item-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .item-subtitle {
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .item-description {
+            color: #495057;
+            line-height: 1.6;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .chart-container {
+            height: 300px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #2c3e50;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .project-themes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .theme-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .theme-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .theme-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .theme-count {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .productivity-viz {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .month-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .month-label {
+            width: 80px;
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .bar {
+            height: 20px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            margin-left: 10px;
+            transition: width 1s ease;
+        }
+
+        .bar-value {
+            margin-left: 10px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="profile-img">RK</div>
+            <h1 class="name">Ravi Kumar</h1>
+            <p class="title">Senior Software Engineer | Cloud Backup & AI Specialist</p>
+            <div class="contact-info">
+                <div class="contact-item">📧 ravikumar180599@gmail.com</div>
+                <div class="contact-item">📱 +91 9521385658</div>
+                <div class="contact-item">🔗 LinkedIn</div>
+                <div class="contact-item">💻 GitHub</div>
+            </div>
+        </div>
+
+        <!-- Performance Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">1,523</div>
+                <div class="stat-label">Total Work Items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">93.6%</div>
+                <div class="stat-label">Completion Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">819</div>
+                <div class="stat-label">Tasks Completed</div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="section">
+            <h2 class="section-title">
+                <div class="section-icon">💼</div>
+                Professional Experience
+            </h2>
+            
+            <div class="experience-item">
+                <h3 class="item-title">Senior Software Engineer</h3>
+                <p class="item-subtitle">SysCloud India, Hyderabad | September 2021 - Present (4+ Years)</p>
+                <div class="item-description">
+                    <p><strong>Cloud Backup & Integration Specialist:</strong> Leading development of enterprise-grade backup, restore, and export solutions for GSuite, O365, QuickBooks, Xero, and Box cloud services. Solutions actively serving production customers with high reliability and performance.</p>
+                    
+                    <p><strong>AI/ML Innovation Leader:</strong> Pioneered AI-powered automation using Langflow framework, developing monitoring agents, configuration generators, and error detection systems that reduced manual work by 30% across teams.</p>
+                    
+                    <p><strong>API Integration Expert:</strong> Architected and implemented RESTful APIs for multiple cloud platforms, specializing in accounting software integrations and Microsoft Graph API implementations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Expertise -->
+        <div class="section">
+            <h2 class="section-title">
+                <div class="section-icon">⚡</div>
+                Technical Expertise
+            </h2>
+            
+            <div class="tech-grid">
+                <div class="tech-item">Node.js</div>
+                <div class="tech-item">PostgreSQL</div>
+                <div class="tech-item">PHP</div>
+                <div class="tech-item">React</div>
+                <div class="tech-item">Python</div>
+                <div class="tech-item">AWS</div>
+                <div class="tech-item">JavaScript</div>
+                <div class="tech-item">GraphQL</div>
+                <div class="tech-item">Docker</div>
+                <div class="tech-item">Kubernetes</div>
+                <div class="tech-item">Langflow</div>
+                <div class="tech-item">ELK Stack</div>
+                <div class="tech-item">Grafana</div>
+                <div class="tech-item">Lambda</div>
+                <div class="tech-item">CloudFormation</div>
+            </div>
+        </div>
+
+        <!-- Project Portfolio -->
+        <div class="section">
+            <h2 class="section-title">
+                <div class="section-icon">🚀</div>
+                Project Portfolio & Achievements
+            </h2>
+            
+            <div class="project-themes">
+                <div class="theme-card">
+                    <div class="theme-name">Backup Systems</div>
+                    <div class="theme-count">443 items</div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-name">AI/ML Integration</div>
+                    <div class="theme-count">259 items</div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-name">Calendar Integration</div>
+                    <div class="theme-count">246 items</div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-name">Xero Integration</div>
+                    <div class="theme-count">65 items</div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-name">API Development</div>
+                    <div class="theme-count">49 items</div>
+                </div>
+                <div class="theme-card">
+                    <div class="theme-name">Node.js Development</div>
+                    <div class="theme-count">37 items</div>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3 class="item-title">AI-Powered Automation Suite</h3>
+                <p class="item-subtitle">Langflow Framework Implementation</p>
+                <div class="item-description">
+                    <p><strong>Daily Backup Run Agent:</strong> Automated failure detection and root cause analysis for customer backup operations, integrating database queries and Kibana logs for comprehensive monitoring.</p>
+                    
+                    <p><strong>Cloud Configuration Generator:</strong> AI-powered system for rapid onboarding of new cloud services (Google Workspace, Microsoft 365, accounting software) within 2-3 days through automated configuration generation.</p>
+                    
+                    <span class="achievement-badge">30% Reduction in Manual Work</span>
+                    <span class="achievement-badge">2-3 Day Onboarding</span>
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3 class="item-title">Enterprise Cloud Backup Platform</h3>
+                <p class="item-subtitle">Multi-Cloud Integration Solution</p>
+                <div class="item-description">
+                    <p>Comprehensive backup, restore, and export solution supporting GSuite, O365, QuickBooks, Xero, and Box. Features unified UI for seamless management across multiple cloud platforms with enterprise-grade reliability.</p>
+                    
+                    <span class="achievement-badge">Production Ready</span>
+                    <span class="achievement-badge">Multi-Cloud Support</span>
+                    <span class="achievement-badge">Enterprise Scale</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Productivity Analytics -->
+        <div class="section">
+            <h2 class="section-title">
+                <div class="section-icon">📊</div>
+                Productivity Analytics
+            </h2>
+            
+            <div class="productivity-viz">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;">Monthly Work Volume (2025)</h3>
+                <div class="month-bar">
+                    <div class="month-label">Jul 2025</div>
+                    <div class="bar" style="width: 55%;"></div>
+                    <div class="bar-value">66 items</div>
+                </div>
+                <div class="month-bar">
+                    <div class="month-label">Jun 2025</div>
+                    <div class="bar" style="width: 100%;"></div>
+                    <div class="bar-value">117 items</div>
+                </div>
+                <div class="month-bar">
+                    <div class="month-label">May 2025</div>
+                    <div class="bar" style="width: 69%;"></div>
+                    <div class="bar-value">81 items</div>
+                </div>
+                <div class="month-bar">
+                    <div class="month-label">Apr 2025</div>
+                    <div class="bar" style="width: 40%;"></div>
+                    <div class="bar-value">47 items</div>
+                </div>
+                <div class="month-bar">
+                    <div class="month-label">Mar 2025</div>
+                    <div class="bar" style="width: 55%;"></div>
+                    <div class="bar-value">64 items</div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                    <div style="font-size: 2em; color: #28a745; font-weight: bold;">153</div>
+                    <div style="color: #6c757d;">Incidents Resolved</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                    <div style="font-size: 2em; color: #17a2b8; font-weight: bold;">166</div>
+                    <div style="color: #6c757d;">Bugs Fixed</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                    <div style="font-size: 2em; color: #ffc107; font-weight: bold;">107</div>
+                    <div style="color: #6c757d;">User Stories</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education & Achievements -->
+        <div class="section">
+            <h2 class="section-title">
+                <div class="section-icon">🎓</div>
+                Education & Achievements
+            </h2>
+            
+            <div class="experience-item">
+                <h3 class="item-title">Computer Science Engineering</h3>
+                <p class="item-subtitle">Lovely Professional University, Punjab | CGPA: 7.69 | 2018-2022</p>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <h3 style="color: #2c3e50; margin-bottom: 15px;">Notable Achievements</h3>
+                <span class="achievement-badge">Newton's Coding Challenge - Rank 1659</span>
+                <span class="achievement-badge">College Hackathon Volunteer</span>
+                <span class="achievement-badge">30% Team Efficiency Improvement</span>
+                <span class="achievement-badge">Production System Architect</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; padding: 30px; color: rgba(255,255,255,0.8);">
+            <p>Portfolio generated from real Azure DevOps data | Built with passion for technology and innovation</p>
+        </div>
+    </div>
+
+    <script>
+        // Animate progress bars and stats on load
+        window.addEventListener('load', function() {
+            // Animate stat numbers
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const finalValue = stat.textContent;
+                if (finalValue.includes('%')) {
+                    animateValue(stat, 0, parseFloat(finalValue), 2000, '%');
+                } else if (finalValue.includes('+')) {
+                    animateValue(stat, 0, parseInt(finalValue), 2000, '+');
+                } else if (finalValue.includes(',')) {
+                    animateValue(stat, 0, parseInt(finalValue.replace(',', '')), 2500, '', true);
+                } else {
+                    animateValue(stat, 0, parseInt(finalValue), 1500);
+                }
+            });
+
+            // Add entrance animations
+            const cards = document.querySelectorAll('.stat-card, .section');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        function animateValue(element, start, end, duration, suffix = '', addComma = false) {
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(start + (end - start) * progress);
+                
+                let displayValue = addComma ? current.toLocaleString() : current.toString();
+                element.textContent = displayValue + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+    </script>
+</body>
+</html>
